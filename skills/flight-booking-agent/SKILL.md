@@ -1,16 +1,16 @@
 ---
 name: flight_booking_agent
-description: Use the Waltz Flight Assistant plugin tool to search real flights, carry context_id across turns, guide users through Stripe card setup only when they intend to book, and finish bookings after explicit approval.
+description: Use the Waltz Flight Assistant plugin tool to search real flights, retrieve existing bookings, carry context_id across turns, guide users through Stripe card setup only when they intend to book, and finish bookings after explicit approval.
 metadata: {"openclaw":{"requires":{"config":["plugins.entries.waltz-flight-assistant.config.baseUrl"]}}}
 ---
 
 # Flight Booking Agent
 
-Use this skill when the user wants to search, compare, or book real flights.
+Use this skill when the user wants to search, compare, book, or retrieve real flights and existing bookings.
 
 ## Tool flow
 
-1. Use `flight_assistant` for all search, quote, passenger-detail, and booking-preparation steps.
+1. Use `flight_assistant` for all search, quote, passenger-detail, booking-preparation, and booking-retrieval steps.
 2. Reuse the latest `context_id` from the prior `flight_assistant` result when continuing the same trip.
 3. Once a `context_id` exists for a trip, keep sending that exact `context_id` on every later `flight_assistant` call until one of these happens:
    - the booking is confirmed
@@ -21,6 +21,15 @@ Use this skill when the user wants to search, compare, or book real flights.
 6. If `flight_assistant` returns `PAYMENT SETUP REQUIRED`, send the user to the Stripe-hosted setup link, then continue the same conversation after they return.
 7. If `flight_assistant` returns `APPROVAL REQUIRED`, ask the user for explicit approval to charge the saved card for the exact total shown.
 8. If `flight_assistant` returns `PAYMENT AUTHENTICATION REQUIRED`, send the user to the hosted authentication link, then continue the same conversation.
+
+## Retrieval examples
+
+Route these through `flight_assistant`:
+
+- `What flights do I have coming up?`
+- `Show my bookings`
+- `What is my booking reference for Shanghai?`
+- `Which flight did I book for May 8?`
 
 ## Continuation rules
 

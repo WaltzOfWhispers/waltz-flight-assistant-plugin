@@ -4,7 +4,7 @@ Native OpenClaw plugin for Waltz Flight Assistant. It proxies real flight search
 
 This package bundles:
 
-- `flight_assistant` for conversational flight search, Stripe card setup handoff, booking approval, and booking completion
+- `flight_assistant` for conversational flight search, booking retrieval, Stripe card setup handoff, booking approval, and booking completion
 - a bundled skill that teaches the correct Stripe saved-card flow
 
 ## Install
@@ -70,6 +70,16 @@ Hard rules:
 - The merchant is the AI Flight Assistant, not the airline.
 - Do not ask for payment setup during browsing or comparison.
 - Do not ask for a specific wallet or off-platform payment flow.
+
+## Booking retrieval
+
+Use the same `flight_assistant` tool for post-booking questions such as:
+
+- `What flights do I have coming up?`
+- `Show my bookings`
+- `What is my booking reference for Shanghai?`
+
+The hosted backend handles booking recall from stored bookings for the current OpenClaw user identity.
 
 ## Publish
 

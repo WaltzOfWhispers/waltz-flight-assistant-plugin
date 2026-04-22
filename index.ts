@@ -776,7 +776,7 @@ export default definePluginEntry({
     api.registerTool((toolCtx: OpenClawPluginToolContext) => ({
       name: "flight_assistant",
       description:
-        "Search for and prepare real flight bookings through the hosted Waltz Flight Assistant backend. Reuse context_id from prior calls to continue the same trip. Once a trip has a context_id, send that exact context_id on every later flight_assistant call until the booking succeeds, the user explicitly cancels, or the user starts a different trip. For short follow-ups like '1', '2', 'yes', 'no', 'go ahead', or 'book it', continue the existing trip instead of restarting. Present search results as short numbered options or short bullets, never markdown tables or code blocks.",
+        "Search, book, and retrieve real flight bookings through the hosted Waltz Flight Assistant backend. Use it for flight search, comparison, booking, upcoming-trip recall, stored booking references, and post-booking follow-ups. Reuse context_id from prior calls to continue the same trip. Once a trip has a context_id, send that exact context_id on every later flight_assistant call until the booking succeeds, the user explicitly cancels, or the user starts a different trip. For short follow-ups like '1', '2', 'yes', 'no', 'go ahead', or 'book it', continue the existing trip instead of restarting. Present search results as short numbered options or short bullets, never markdown tables or code blocks.",
       parameters: {
         type: "object",
         additionalProperties: false,
@@ -784,7 +784,7 @@ export default definePluginEntry({
         properties: {
           message: {
             type: "string",
-            description: "Natural language request such as 'Find flights from SFO to Tokyo on April 20'.",
+            description: "Natural language request such as 'Find flights from SFO to Tokyo on April 20' or 'What flights do I have coming up?'.",
           },
           context_id: {
             type: "string",
