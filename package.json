@@ -1,0 +1,60 @@
+{
+  "name": "@waltzlabs/flight-assistant-plugin",
+  "version": "0.1.0",
+  "description": "OpenClaw plugin for Waltz Flight Assistant that proxies flight search and booking to the hosted backend.",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WaltzOfWhispers/waltz-flight-assistant-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WaltzOfWhispers/waltz-flight-assistant-plugin/issues"
+  },
+  "homepage": "https://github.com/WaltzOfWhispers/waltz-flight-assistant-plugin#readme",
+  "keywords": [
+    "openclaw",
+    "clawhub",
+    "travel",
+    "flights",
+    "booking",
+    "agent"
+  ],
+  "files": [
+    "README.md",
+    "index.ts",
+    "openclaw.plugin.json",
+    "skills"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "install": {
+      "npmSpec": "@waltzlabs/flight-assistant-plugin",
+      "localPath": ".",
+      "defaultChoice": "npm",
+      "minHostVersion": ">=2026.4.0"
+    },
+    "compat": {
+      "pluginApi": ">=2026.3.24-beta.2",
+      "minGatewayVersion": "2026.3.24-beta.2"
+    },
+    "build": {
+      "openclawVersion": "2026.3.24-beta.2",
+      "pluginSdkVersion": "2026.3.24-beta.2"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "openclaw": "^2026.4.0"
+  }
+}

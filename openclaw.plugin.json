@@ -1,0 +1,65 @@
+{
+  "id": "waltz-flight-assistant",
+  "name": "Waltz Flight Assistant",
+  "description": "Adds Waltz Flight Assistant search and booking tools backed by the hosted flight backend.",
+  "version": "0.1.0",
+  "skills": ["./skills"],
+  "contracts": {
+    "tools": ["flight_assistant"]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "baseUrl": {
+        "type": "string",
+        "description": "Base URL for the hosted flight agent, for example https://flights.example.com"
+      },
+      "authToken": {
+        "type": "string",
+        "description": "Optional bearer token sent to the hosted flight agent"
+      },
+      "openclawId": {
+        "type": "string",
+        "description": "Preferred stable OpenClaw user id forwarded to the hosted flight agent"
+      },
+      "userId": {
+        "type": "string",
+        "description": "Legacy alias for openclawId. Prefer openclawId for new installs."
+      },
+      "requestTimeoutMs": {
+        "type": "integer",
+        "minimum": 1000,
+        "description": "HTTP timeout for calls to the hosted flight agent"
+      }
+    }
+  },
+  "uiHints": {
+    "baseUrl": {
+      "label": "Waltz Flight URL",
+      "placeholder": "https://flights.example.com",
+      "help": "Hosted base URL for the Waltz Flight Assistant backend."
+    },
+    "authToken": {
+      "label": "Bearer Token",
+      "sensitive": true,
+      "advanced": true,
+      "help": "Optional bearer token for protected hosted deployments."
+    },
+    "openclawId": {
+      "label": "OpenClaw ID",
+      "advanced": true,
+      "placeholder": "openclaw_user_123"
+    },
+    "userId": {
+      "label": "User ID",
+      "advanced": true,
+      "placeholder": "legacy_user_123"
+    },
+    "requestTimeoutMs": {
+      "label": "Request Timeout (ms)",
+      "advanced": true,
+      "placeholder": "30000"
+    }
+  }
+}
