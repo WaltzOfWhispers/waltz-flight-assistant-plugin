@@ -313,8 +313,40 @@ function isExplicitTripReset(messageText: string): boolean {
   return /\b(cancel|nevermind|never mind|start over|new trip|different trip)\b/i.test(messageText);
 }
 
+function looksLikeRouteShorthand(messageText: string): boolean {
+  const trimmed = messageText.trim();
+  if (!/\bto\b/i.test(trimmed)) {
+    return false;
+  }
+
+  const routeMatch = trimmed.match(
+    /(^|\b)([A-Za-z]{3,}|[A-Za-z]{3})\s+to\s+([A-Za-z][A-Za-z\s'-]{2,}|[A-Za-z]{3})(\b|$)/i
+  );
+  if (!routeMatch) {
+    return false;
+  }
+
+  const hasDateHint =
+    /\b(?:jan|january|feb|february|mar|march|apr|april|may|jun|june|jul|july|aug|august|sep|sept|september|oct|october|nov|november|dec|december)\b/i.test(trimmed) ||
+    /\b\d{4}-\d{2}-\d{2}\b/.test(trimmed) ||
+    /\b\d{1,2}\/\d{1,2}(?:\/\d{2,4})?\b/.test(trimmed) ||
+    /\btoday\b/i.test(trimmed) ||
+    /\btomorrow\b/i.test(trimmed);
+  const hasTripHint =
+    /\bone[ -]?way\b/i.test(trimmed) ||
+    /\bround trip\b/i.test(trimmed) ||
+    /\breturn(?:ing)?\b/i.test(trimmed) ||
+    /\bnonstop\b/i.test(trimmed) ||
+    /\bdirect\b/i.test(trimmed);
+
+  return hasDateHint || hasTripHint;
+}
+
 function isLikelyNewTripRequest(messageText: string): boolean {
-  return /\b(book me a flight|find flights?|search flights?|flight from .+ to .+|from .+ to .+ on)\b/i.test(messageText);
+  return (
+    /\b(book me a flight|find flights?|search flights?|flight from .+ to .+|from .+ to .+ on)\b/i.test(messageText) ||
+    looksLikeRouteShorthand(messageText)
+  );
 }
 
 function sessionStateRoot(stateDir: string) {
@@ -671,6 +703,14 @@ export default definePluginEntry({
       const sessionKey = asString(ctx?.sessionKey);
       const cleanedBody = asString(event?.cleanedBody) ?? "";
       if (!sessionKey || !cleanedBody) {
+        return;
+      }
+
+      if (isExplicitTripReset(cleanedBody) || isLikelyNewTripRequest(cleanedBody)) {
+        await clearActiveFlightSession(stateDir, sessionKey, api.logger);
+        api.logger.info(
+          `waltz-flight-assistant before_agent_reply cleared active session for new trip session=${sessionKey} message="${cleanedBody.slice(0, 120)}"`
+        );
         return;
       }
 
