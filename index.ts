@@ -714,6 +714,21 @@ export default definePluginEntry({
           );
         }
 
+        if (activeSession.channelId && activeSession.conversationId) {
+          await sendOutboundText({
+            api,
+            session: activeSession,
+            text: result.text || "Waltz Flight Assistant returned no text.",
+          });
+          api.logger.info(
+            `waltz-flight-assistant before_agent_reply sent outbound text session=${sessionKey} channel=${activeSession.channelId}`
+          );
+          return {
+            handled: true,
+            reason: "active-flight-session-outbound",
+          };
+        }
+
         return {
           handled: true,
           reason: "active-flight-session",
@@ -725,6 +740,23 @@ export default definePluginEntry({
         api.logger.warn(
           `waltz-flight-assistant before_agent_reply failed session=${sessionKey}: ${error?.message ?? String(error)}`
         );
+        if (activeSession.channelId && activeSession.conversationId) {
+          try {
+            await sendOutboundText({
+              api,
+              session: activeSession,
+              text: "Waltz Flight Assistant hit an error while continuing your trip. Please try again in a moment.",
+            });
+            return {
+              handled: true,
+              reason: "active-flight-session-error-outbound",
+            };
+          } catch (sendError: any) {
+            api.logger.warn(
+              `waltz-flight-assistant outbound send failed session=${sessionKey}: ${sendError?.message ?? String(sendError)}`
+            );
+          }
+        }
         return {
           handled: true,
           reason: "active-flight-session-error",
