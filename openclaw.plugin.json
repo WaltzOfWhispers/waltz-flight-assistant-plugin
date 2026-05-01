@@ -1,8 +1,8 @@
 {
   "id": "waltz-flight-assistant",
   "name": "Waltz Flight Assistant",
-  "description": "Adds Waltz Flight Assistant search and booking tools backed by the hosted flight backend.",
-  "version": "0.1.1",
+  "description": "Search, compare, book, and revisit real flights through Waltz Flight Assistant.",
+  "version": "0.1.2",
   "skills": ["./skills"],
   "activation": {
     "onStartup": true

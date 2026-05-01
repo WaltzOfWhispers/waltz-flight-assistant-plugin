@@ -1,7 +1,7 @@
 {
   "name": "@waltzlabs/flight-assistant-plugin",
-  "version": "0.1.1",
-  "description": "OpenClaw plugin for Waltz Flight Assistant that proxies flight search and booking to the hosted backend.",
+  "version": "0.1.2",
+  "description": "Conversational flight booking for OpenClaw. Search, compare, book, and revisit real trips in one thread.",
   "type": "module",
   "scripts": {
     "typecheck": "PATH=\"$HOME/.bun/bin:$PATH\" bunx tsc --noEmit",

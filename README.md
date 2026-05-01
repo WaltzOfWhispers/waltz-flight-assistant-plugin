@@ -1,6 +1,6 @@
 # Waltz Flight Assistant Plugin
 
-Native OpenClaw plugin for Waltz Flight Assistant. It proxies real flight search and booking to the hosted backend.
+Conversational flight booking for OpenClaw. Search, compare, book, and revisit real trips in one thread.
 
 This package bundles:
 
