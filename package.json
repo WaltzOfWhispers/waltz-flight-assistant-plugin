@@ -4,7 +4,9 @@
   "description": "OpenClaw plugin for Waltz Flight Assistant that proxies flight search and booking to the hosted backend.",
   "type": "module",
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "PATH=\"$HOME/.bun/bin:$PATH\" bunx tsc --noEmit",
+    "verify:publish-dry-run": "PATH=\"$HOME/.bun/bin:$PATH\" bunx clawhub package publish WaltzOfWhispers/waltz-flight-assistant-plugin --dry-run --json",
+    "verify:cleanroom-install": "TMP_HOME=$(mktemp -d /tmp/waltz-openclaw-cleanroom.XXXXXX) && PATH=\"$HOME/.bun/bin:$PATH\" HOME=\"$TMP_HOME\" bunx openclaw plugins install -l \"$PWD\" && test -f \"$TMP_HOME/.openclaw/openclaw.json\" && test -f \"$TMP_HOME/.openclaw/waltz-flight-assistant/openclaw-id.txt\" && echo \"Clean-room OpenClaw home: $TMP_HOME/.openclaw\" && cat \"$TMP_HOME/.openclaw/openclaw.json\""
   },
   "repository": {
     "type": "git",

@@ -9,23 +9,25 @@ This package bundles:
 
 ## Install
 
-Published package:
+Today, the verified install path is a local source install from this standalone repo:
+
+```bash
+openclaw plugins install -l .
+```
+
+Once the ClawHub package is published, the end-user install path becomes:
 
 ```bash
 openclaw plugins install @waltzlabs/flight-assistant-plugin
 ```
 
-ClawHub-only install:
+Or explicitly through ClawHub:
 
 ```bash
 openclaw plugins install clawhub:@waltzlabs/flight-assistant-plugin
 ```
 
-Local development install from this repo:
-
-```bash
-openclaw plugins install .
-```
+The published package does not exist until the ClawHub publish step is completed. Use the linked local install above until then.
 
 ## Configure
 
@@ -57,6 +59,17 @@ Optional plugin config:
 
 Restart OpenClaw or start a new session after configuration changes.
 
+## Distribution verification
+
+For release and clean-room install checks, use the checklist in [docs/distribution-checklist.md](./docs/distribution-checklist.md).
+
+Convenience commands from this repo:
+
+```bash
+bun run verify:publish-dry-run
+bun run verify:cleanroom-install
+```
+
 ## Booking flow
 
 1. Use `flight_assistant` for search, flight selection, and passenger details.
@@ -86,8 +99,8 @@ The hosted backend handles booking recall from stored bookings for the current O
 ClawHub plugin packages use the package publish flow:
 
 ```bash
-clawhub package publish your-org/your-plugin --dry-run
-clawhub package publish your-org/your-plugin
+bunx clawhub package publish WaltzOfWhispers/waltz-flight-assistant-plugin --dry-run
+bunx clawhub package publish WaltzOfWhispers/waltz-flight-assistant-plugin
 ```
 
 This repository is the standalone source for the Waltz Flight Assistant OpenClaw plugin. Update the GitHub owner or package metadata if you publish it from a different org or account.
