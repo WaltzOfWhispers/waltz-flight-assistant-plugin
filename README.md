@@ -31,6 +31,8 @@ openclaw plugins install clawhub:@waltzlabs/flight-assistant-plugin
 
 The published package does not exist until the ClawHub publish step is completed. Use the linked local install above until then.
 
+After install, restart OpenClaw before changing plugin config.
+
 ## Configure
 
 Set the hosted flight agent URL in `openclaw.json`:
@@ -51,6 +53,8 @@ Set the hosted flight agent URL in `openclaw.json`:
 ```
 
 Use `https://waltz-flight-staging.up.railway.app` unless Waltz provides a different deployment URL.
+
+If OpenClaw warns that the plugin config is being ignored, the install has not been loaded into the current session yet. Restart OpenClaw first, then update `openclaw.json`.
 
 If you previously installed this plugin under the old `flight-agent` id, move your config to `plugins.entries.waltz-flight-assistant` before restarting OpenClaw.
 
