@@ -1,7 +1,7 @@
 {
   "name": "@waltzlabs/flight-assistant-plugin",
   "version": "0.1.2",
-  "description": "Conversational flight booking for OpenClaw. Search, compare, book, and revisit real trips in one thread.",
+  "description": "Book flights end to end, in conversation.",
   "type": "module",
   "scripts": {
     "typecheck": "PATH=\"$HOME/.bun/bin:$PATH\" bunx tsc --noEmit",

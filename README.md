@@ -1,6 +1,8 @@
 # Waltz Flight Assistant Plugin
 
-Conversational flight booking for OpenClaw. Search, compare, book, and revisit real trips in one thread.
+Book flights end to end, in conversation.
+
+No more 14 tabs and a spreadsheet.
 
 This package bundles:
 
@@ -40,13 +42,15 @@ Set the hosted flight agent URL in `openclaw.json`:
       "waltz-flight-assistant": {
         "enabled": true,
         "config": {
-          "baseUrl": "https://your-waltz-flight.example.com"
+          "baseUrl": "https://waltz-flight-staging.up.railway.app"
         }
       }
     }
   }
 }
 ```
+
+Use `https://waltz-flight-staging.up.railway.app` unless Waltz provides a different deployment URL.
 
 If you previously installed this plugin under the old `flight-agent` id, move your config to `plugins.entries.waltz-flight-assistant` before restarting OpenClaw.
 

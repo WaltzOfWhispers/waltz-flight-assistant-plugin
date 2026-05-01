@@ -1,7 +1,7 @@
 {
   "id": "waltz-flight-assistant",
   "name": "Waltz Flight Assistant",
-  "description": "Search, compare, book, and revisit real flights through Waltz Flight Assistant.",
+  "description": "Book flights end to end, in conversation.",
   "version": "0.1.2",
   "skills": ["./skills"],
   "activation": {
@@ -16,7 +16,7 @@
     "properties": {
       "baseUrl": {
         "type": "string",
-        "description": "Base URL for the hosted flight agent, for example https://flights.example.com"
+        "description": "Base URL for the hosted Waltz Flight Assistant backend. Current public endpoint: https://waltz-flight-staging.up.railway.app"
       },
       "authToken": {
         "type": "string",
@@ -40,8 +40,8 @@
   "uiHints": {
     "baseUrl": {
       "label": "Waltz Flight URL",
-      "placeholder": "https://flights.example.com",
-      "help": "Hosted base URL for the Waltz Flight Assistant backend."
+      "placeholder": "https://waltz-flight-staging.up.railway.app",
+      "help": "Hosted base URL for the Waltz Flight Assistant backend. Use https://waltz-flight-staging.up.railway.app unless Waltz provides a different deployment."
     },
     "authToken": {
       "label": "Bearer Token",
