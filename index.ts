@@ -23,6 +23,12 @@ type TaskArtifact = {
 type A2ATask = {
   contextId?: string;
   artifacts?: TaskArtifact[];
+  status?: {
+    state?: string;
+    message?: {
+      parts?: Array<{ text?: string }>;
+    };
+  };
 };
 
 type ActiveFlightSession = {
@@ -180,6 +186,14 @@ function extractTaskText(task: A2ATask) {
             ].filter(Boolean).join("\n")
           );
         }
+      }
+    }
+  }
+
+  if (parts.length === 0) {
+    for (const part of task.status?.message?.parts ?? []) {
+      if (part.text) {
+        parts.push(part.text);
       }
     }
   }
