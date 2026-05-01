@@ -2,6 +2,8 @@
 
 Book flights end to end, in conversation.
 
+Waltz learns your preferences and traveler info over time, so you stop re-entering everything.
+
 No more 14 tabs and a spreadsheet.
 
 This package bundles:

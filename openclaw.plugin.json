@@ -1,8 +1,8 @@
 {
   "id": "waltz-flight-assistant",
   "name": "Waltz Flight Assistant",
-  "description": "Book flights end to end, in conversation.",
-  "version": "0.1.2",
+  "description": "Book flights end to end, in conversation. Waltz learns your preferences and traveler info over time, so you stop re-entering everything.",
+  "version": "0.1.3",
   "skills": ["./skills"],
   "activation": {
     "onStartup": true
