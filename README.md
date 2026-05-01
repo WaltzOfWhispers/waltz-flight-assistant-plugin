@@ -1,8 +1,6 @@
 # Waltz Flight Assistant Plugin
 
-Book flights end to end, in conversation.
-
-Waltz learns your preferences and traveler info over time, so you stop re-entering everything.
+Book flights end to end, in conversation. Waltz learns your preferences and traveler info over time to find the perfect flight for you!
 
 No more 14 tabs and a spreadsheet.
 
