@@ -1,6 +1,6 @@
 {
   "name": "@waltzlabs/flight-assistant-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "OpenClaw plugin for Waltz Flight Assistant that proxies flight search and booking to the hosted backend.",
   "type": "module",
   "scripts": {
@@ -25,6 +25,7 @@
     "agent"
   ],
   "files": [
+    ".gitignore",
     "README.md",
     "index.ts",
     "openclaw.plugin.json",
