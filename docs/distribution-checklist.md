@@ -8,12 +8,14 @@ Use this before publishing a new plugin version or declaring a clean-room instal
 - GitHub repo: `WaltzOfWhispers/waltz-flight-assistant-plugin`
 - ClawHub package name: `@waltzlabs/flight-assistant-plugin`
 - Manifest/config key: `waltz-flight-assistant`
+- Current hosted backend: `https://waltz-flight-staging.up.railway.app`
 
-As of 2026-05-01:
+As of 2026-05-02:
 
 - ClawHub publish dry-run succeeds.
 - Clean-room local link install succeeds against OpenClaw `2026.4.21`.
-- The ClawHub package is not published yet.
+- ClawHub package is published at `@waltzlabs/flight-assistant-plugin@0.1.4`.
+- Public install and config should point at `https://waltz-flight-staging.up.railway.app`.
 
 ## Local verification
 
@@ -32,7 +34,7 @@ What `verify:cleanroom-install` proves:
 - OpenClaw writes the expected config entry under `plugins.entries.waltz-flight-assistant`.
 - The plugin creates its persisted `openclaw-id.txt` state on first load.
 
-## Publish flow
+## Publish/update flow
 
 1. Authenticate:
 
@@ -53,22 +55,23 @@ bun run verify:publish-dry-run
 bunx clawhub package publish WaltzOfWhispers/waltz-flight-assistant-plugin
 ```
 
-4. Verify the package exists:
+4. Verify the published package:
 
 ```bash
 bunx clawhub package inspect @waltzlabs/flight-assistant-plugin
 ```
 
-## First-run install check
+## Public install path
 
-After the package is published, validate the actual end-user path on a clean OpenClaw home:
+End users should install from ClawHub:
 
 ```bash
-TMP_HOME=$(mktemp -d /tmp/waltz-openclaw-published.XXXXXX)
-HOME="$TMP_HOME" bunx openclaw plugins install clawhub:@waltzlabs/flight-assistant-plugin
+bunx openclaw plugins install @waltzlabs/flight-assistant-plugin
 ```
 
-Then configure:
+Then restart OpenClaw before editing config.
+
+Configure `openclaw.json` with:
 
 ```json
 {
@@ -77,7 +80,35 @@ Then configure:
       "waltz-flight-assistant": {
         "enabled": true,
         "config": {
-          "baseUrl": "https://your-hosted-backend.example.com"
+          "baseUrl": "https://waltz-flight-staging.up.railway.app"
+        }
+      }
+    }
+  }
+}
+```
+
+If OpenClaw warns that the config is ignored, restart first and then apply the config change again.
+
+## First-run clean-room check
+
+Validate the actual end-user path on a clean OpenClaw home:
+
+```bash
+TMP_HOME=$(mktemp -d /tmp/waltz-openclaw-published.XXXXXX)
+HOME="$TMP_HOME" bunx openclaw plugins install @waltzlabs/flight-assistant-plugin
+```
+
+Then restart OpenClaw, configure:
+
+```json
+{
+  "plugins": {
+    "entries": {
+      "waltz-flight-assistant": {
+        "enabled": true,
+        "config": {
+          "baseUrl": "https://waltz-flight-staging.up.railway.app"
         }
       }
     }
