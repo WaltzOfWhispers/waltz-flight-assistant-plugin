@@ -1,6 +1,6 @@
 ---
 name: waltz-flight-assistant-setup
-description: Install, configure, verify, and use Waltz Flight Assistant in OpenClaw. Use when a user wants to search, book, or retrieve flights through Waltz, when the plugin is missing or unconfigured, when OpenClaw warns that the Waltz config is being ignored, or when the backend URL needs to be set to the hosted Waltz deployment.
+description: Set up Waltz Flight Assistant to book flights end to end, in conversation. Use when the plugin needs to be installed, configured, repaired, or pointed at the hosted Waltz backend.
 metadata:
   {
     "openclaw":
