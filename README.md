@@ -17,7 +17,29 @@ Today, the verified install path is a local source install from this standalone 
 openclaw plugins install -l .
 ```
 
-Once the ClawHub package is published, the end-user install path becomes:
+The simplest end-user path is the companion setup skill:
+
+```bash
+openclaw skills install waltz-flight-assistant-setup
+```
+
+Then ask OpenClaw:
+
+```text
+Set up Waltz Flight Assistant for me.
+```
+
+That skill installs the plugin, writes the `openclaw.json` entry, and points Waltz at:
+
+```text
+https://waltz-flight-staging.up.railway.app
+```
+
+If OpenClaw says the plugin config is being ignored, restart OpenClaw and run the same request again.
+
+## Direct plugin install
+
+If you want to install the plugin directly instead of using the setup skill:
 
 ```bash
 openclaw plugins install @waltzlabs/flight-assistant-plugin
@@ -28,8 +50,6 @@ Or explicitly through ClawHub:
 ```bash
 openclaw plugins install clawhub:@waltzlabs/flight-assistant-plugin
 ```
-
-The published package does not exist until the ClawHub publish step is completed. Use the linked local install above until then.
 
 After install, restart OpenClaw before changing plugin config.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Waltz Flight Assistant Setup"
+  short_description: "Install and configure Waltz Flight Assistant in OpenClaw"
+  default_prompt: "Use $waltz-flight-assistant-setup to install, configure, and verify Waltz Flight Assistant, then route flight requests through it."
