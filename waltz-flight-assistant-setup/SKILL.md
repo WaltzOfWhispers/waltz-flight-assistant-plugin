@@ -19,7 +19,7 @@ Install and configure the Waltz Flight Assistant plugin before trying to route f
 1. Check whether the plugin is already installed and loaded:
    - `openclaw plugins inspect waltz-flight-assistant --json`
 2. If the plugin is missing, install it:
-   - `openclaw plugins install @waltzlabs/flight-assistant-plugin`
+   - `openclaw plugins install clawhub:@waltzlabs/flight-assistant-plugin`
 3. If the plugin was just installed, restart OpenClaw before editing config or testing flight requests.
 4. Update `~/.openclaw/openclaw.json` so `plugins.entries.waltz-flight-assistant` exists with:
 
@@ -40,7 +40,7 @@ Install and configure the Waltz Flight Assistant plugin before trying to route f
 
 ## Runtime rules
 
-- Use package name `@waltzlabs/flight-assistant-plugin` for installs.
+- Use published plugin package `clawhub:@waltzlabs/flight-assistant-plugin` for installs.
 - Use plugin id `waltz-flight-assistant` for config.
 - Use `https://waltz-flight-staging.up.railway.app` as the default `baseUrl` unless Waltz provides a different deployment.
 - If OpenClaw says the Waltz config is being ignored, restart first and then apply the config change again.

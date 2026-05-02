@@ -7,15 +7,9 @@ No more 14 tabs and a spreadsheet.
 This package bundles:
 
 - `flight_assistant` for conversational flight search, booking retrieval, Stripe card setup handoff, booking approval, and booking completion
-- a bundled skill that teaches the correct Stripe saved-card flow
+- a bundled runtime skill that teaches OpenClaw when to call `flight_assistant`, how to handle the Stripe links returned by the backend, and how to continue the same trip after the user comes back
 
 ## Install
-
-Today, the verified install path is a local source install from this standalone repo:
-
-```bash
-openclaw plugins install -l .
-```
 
 The simplest end-user path is the companion setup skill:
 
@@ -48,16 +42,26 @@ If OpenClaw says the plugin config is being ignored, restart OpenClaw and run th
 If you want to install the plugin directly instead of using the setup skill:
 
 ```bash
-openclaw plugins install @waltzlabs/flight-assistant-plugin
-```
-
-Or explicitly through ClawHub:
-
-```bash
 openclaw plugins install clawhub:@waltzlabs/flight-assistant-plugin
 ```
 
 After install, restart OpenClaw before changing plugin config.
+
+OpenClaw may also accept:
+
+```bash
+openclaw plugins install @waltzlabs/flight-assistant-plugin
+```
+
+but the ClawHub form above is the explicit published install path.
+
+## Local development install
+
+For local development from this repo only:
+
+```bash
+openclaw plugins install -l .
+```
 
 ## Configure
 
