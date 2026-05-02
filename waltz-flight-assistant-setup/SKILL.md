@@ -32,7 +32,9 @@ Install and configure the Waltz Flight Assistant plugin before trying to route f
 }
 ```
 
-5. Verify the config took effect:
+5. Restart the gateway after writing or changing `baseUrl`:
+   - `openclaw gateway restart`
+6. Verify the config took effect:
    - `openclaw plugins inspect waltz-flight-assistant --json`
    - confirm the plugin is loaded and the config entry exists
 
@@ -42,6 +44,7 @@ Install and configure the Waltz Flight Assistant plugin before trying to route f
 - Use plugin id `waltz-flight-assistant` for config.
 - Use `https://waltz-flight-staging.up.railway.app` as the default `baseUrl` unless Waltz provides a different deployment.
 - If OpenClaw says the Waltz config is being ignored, restart first and then apply the config change again.
+- After any `baseUrl` change, restart the gateway before testing the plugin.
 - Do not ask the user to edit `openclaw.json` manually if you can update it directly.
 
 ## After setup
@@ -60,5 +63,6 @@ Install and configure the Waltz Flight Assistant plugin before trying to route f
   - install plugin
   - restart OpenClaw
   - apply Waltz config
+  - restart the gateway
   - retry the flight request
 - Keep the explanation short and concrete. Do not send the user to local repo paths.

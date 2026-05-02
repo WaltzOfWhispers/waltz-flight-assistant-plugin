@@ -35,6 +35,12 @@ That skill installs the plugin, writes the `openclaw.json` entry, and points Wal
 https://waltz-flight-staging.up.railway.app
 ```
 
+After the skill updates `baseUrl`, restart the gateway:
+
+```bash
+openclaw gateway restart
+```
+
 If OpenClaw says the plugin config is being ignored, restart OpenClaw and run the same request again.
 
 ## Direct plugin install
@@ -86,6 +92,7 @@ Optional plugin config:
 - `requestTimeoutMs`: HTTP timeout in milliseconds
 
 Restart OpenClaw or start a new session after configuration changes.
+After changing `baseUrl`, also run `openclaw gateway restart`.
 
 ## Distribution verification
 
