@@ -47,7 +47,8 @@ type SessionStateLogger = {
   warn: (message: string) => void;
 };
 
-const DEFAULT_TIMEOUT_MS = 30_000;
+const DEFAULT_REQUEST_TIMEOUT_MS = 120_000;
+const DEFAULT_STATUS_TIMEOUT_MS = 30_000;
 
 const ACTIVE_FLIGHT_TTL_MS = 30 * 60 * 1000;
 const PAYMENT_SETUP_RESUME_POLL_MS = 5_000;
@@ -71,7 +72,7 @@ function readConfig(raw: Record<string, unknown> | undefined): Required<Pick<Plu
     authToken: asString(raw?.authToken),
     openclawId: asString(raw?.openclawId),
     userId: asString(raw?.userId),
-    requestTimeoutMs: asNumber(raw?.requestTimeoutMs) ?? DEFAULT_TIMEOUT_MS,
+    requestTimeoutMs: asNumber(raw?.requestTimeoutMs) ?? DEFAULT_REQUEST_TIMEOUT_MS,
   };
 }
 
@@ -526,7 +527,10 @@ async function fetchPaymentSetupStatus(params: {
   contextId: string;
   openclawId: string;
 }) {
-  const timeoutMs = params.config.requestTimeoutMs ?? DEFAULT_TIMEOUT_MS;
+  const timeoutMs = Math.min(
+    params.config.requestTimeoutMs ?? DEFAULT_REQUEST_TIMEOUT_MS,
+    DEFAULT_STATUS_TIMEOUT_MS
+  );
   const url = new URL(`${requireBaseUrl(params.config)}/api/payments/setup/status`);
   url.searchParams.set("context_id", params.contextId);
   url.searchParams.set("openclaw_id", params.openclawId);
@@ -552,6 +556,25 @@ async function fetchPaymentSetupStatus(params: {
       expYear?: number | null;
     };
   };
+}
+
+function isTimeoutError(error: unknown): boolean {
+  if (!error || typeof error !== "object") {
+    return false;
+  }
+
+  const message = "message" in error && typeof (error as any).message === "string"
+    ? (error as any).message
+    : "";
+  const name = "name" in error && typeof (error as any).name === "string"
+    ? (error as any).name
+    : "";
+
+  return (
+    name === "TimeoutError" ||
+    name === "AbortError" ||
+    message.includes("aborted due to timeout")
+  );
 }
 
 async function sendOutboundText(params: {
@@ -593,7 +616,7 @@ async function sendFlightAgentMessage(params: {
   openclawId: string;
   contextId?: string;
 }) {
-  const timeoutMs = params.config.requestTimeoutMs ?? DEFAULT_TIMEOUT_MS;
+  const timeoutMs = params.config.requestTimeoutMs ?? DEFAULT_REQUEST_TIMEOUT_MS;
   const rpcBody = {
     jsonrpc: "2.0",
     id: 1,
@@ -615,12 +638,22 @@ async function sendFlightAgentMessage(params: {
     },
   };
 
-  const response = await fetch(`${requireBaseUrl(params.config)}/a2a`, {
-    method: "POST",
-    headers: buildHeaders(params.config),
-    body: JSON.stringify(rpcBody),
-    signal: AbortSignal.timeout(timeoutMs),
-  });
+  let response: Response;
+  try {
+    response = await fetch(`${requireBaseUrl(params.config)}/a2a`, {
+      method: "POST",
+      headers: buildHeaders(params.config),
+      body: JSON.stringify(rpcBody),
+      signal: AbortSignal.timeout(timeoutMs),
+    });
+  } catch (error) {
+    if (isTimeoutError(error)) {
+      throw new Error(
+        `Waltz Flight Assistant timed out after ${Math.round(timeoutMs / 1000)} seconds. The backend may still be processing the booking, so check the active trip before retrying.`
+      );
+    }
+    throw error;
+  }
 
   const payload = await parseJsonResponse(response);
   if (payload.error) {

@@ -93,7 +93,7 @@ Optional plugin config:
 - `authToken`: bearer token for protected hosted deployments
 - `openclawId`: preferred stable OpenClaw user id forwarded to the hosted agent
 - `userId`: legacy alias for `openclawId`
-- `requestTimeoutMs`: HTTP timeout in milliseconds
+- `requestTimeoutMs`: HTTP timeout in milliseconds for search and booking calls. Default: `120000`.
 
 Restart OpenClaw or start a new session after configuration changes.
 After changing `baseUrl`, also run `openclaw gateway restart`.

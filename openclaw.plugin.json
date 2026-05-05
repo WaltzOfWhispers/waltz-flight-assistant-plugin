@@ -2,7 +2,7 @@
   "id": "waltz-flight-assistant",
   "name": "Waltz Flight Assistant",
   "description": "Book flights end to end, in conversation. Waltz learns your preferences and traveler info over time to find the perfect flight for you!",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "skills": ["./skills"],
   "activation": {
     "onStartup": true
@@ -33,7 +33,7 @@
       "requestTimeoutMs": {
         "type": "integer",
         "minimum": 1000,
-        "description": "HTTP timeout for calls to the hosted flight agent"
+        "description": "HTTP timeout in milliseconds for flight search and booking calls to the hosted Waltz backend"
       }
     }
   },
@@ -62,7 +62,7 @@
     "requestTimeoutMs": {
       "label": "Request Timeout (ms)",
       "advanced": true,
-      "placeholder": "30000"
+      "placeholder": "120000"
     }
   }
 }
