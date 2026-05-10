@@ -2,7 +2,7 @@
   "id": "waltz-flight-assistant",
   "name": "Waltz Flight Assistant",
   "description": "Book a flight end to end, in one conversation.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "skills": ["./skills"],
   "activation": {
     "onStartup": true

@@ -51,8 +51,11 @@ Route these through `flight_assistant`:
 
 ## Response style
 
-- Keep the user-facing summary short.
-- When showing flight options, use short numbered options or short flat bullets.
+- Keep the user-facing summary short for status updates, approvals, and booking confirmations.
+- When `flight_assistant` returns flight search results, preserve the full option details instead of compressing them to airline + price only.
+- For each presented option, keep the departure date, origin and destination airports, departure and arrival times, stops, duration, and price.
+- If the tool already returned a well-formatted options block, reuse that structure with only light cleanup.
+- When showing flight options, use short numbered options or short flat bullets, but do not omit the itinerary details.
 - Never use markdown tables.
 - Never wrap flight options in code blocks or fenced code.
 - Do not restyle the tool output into a spreadsheet-like format.
