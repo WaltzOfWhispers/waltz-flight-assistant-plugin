@@ -1,6 +1,6 @@
 # Waltz Flight Assistant Plugin
 
-Book flights end to end, in conversation. Waltz learns your preferences and traveler info over time to find the perfect flight for you!
+Book a flight end to end, in one conversation.
 
 No more 14 tabs and a spreadsheet.
 
@@ -143,7 +143,7 @@ bunx clawhub package publish . \
   --family code-plugin \
   --name @waltzofwhispers/flight-assistant-plugin \
   --display-name "Waltz Flight Assistant" \
-  --version 0.2.1 \
+  --version 0.2.2 \
   --source-repo WaltzOfWhispers/waltz-flight-assistant-plugin \
   --source-commit "$(git rev-parse HEAD)" \
   --source-ref main \

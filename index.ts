@@ -262,7 +262,7 @@ function isLikelyNewTripRequest(messageText: string): boolean {
 export default definePluginEntry({
   id: "waltz-flight-assistant",
   name: "Waltz Flight Assistant",
-  description: "Proxy real flight search and booking to the hosted Waltz Flight Assistant backend.",
+  description: "Book a flight end to end, in one conversation.",
   register(api: any) {
     const config = readConfig((api.pluginConfig ?? {}) as Record<string, unknown>);
     const stateDir = api.runtime.state.resolveStateDir();

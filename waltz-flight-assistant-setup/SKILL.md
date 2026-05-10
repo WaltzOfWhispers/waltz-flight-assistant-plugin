@@ -1,6 +1,6 @@
 ---
 name: waltz-flight-assistant-setup
-description: Set up Waltz Flight Assistant to book flights end to end, in conversation. Use when the plugin needs to be installed, configured, repaired, or pointed at the hosted Waltz backend.
+description: Set up Waltz Flight Assistant. Book a flight end to end, in one conversation.
 metadata:
   {
     "openclaw":

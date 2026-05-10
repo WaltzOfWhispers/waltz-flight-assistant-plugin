@@ -1,4 +1,4 @@
 interface:
   display_name: "Waltz Flight Assistant Setup"
-  short_description: "Install and configure Waltz Flight Assistant"
+  short_description: "Book a flight end to end, in one conversation."
   default_prompt: "Use $waltz-flight-assistant-setup to install and configure Waltz Flight Assistant in OpenClaw."
