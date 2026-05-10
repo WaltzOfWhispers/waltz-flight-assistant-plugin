@@ -1,6 +1,6 @@
 {
   "name": "@waltzofwhispers/flight-assistant-plugin",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Book a flight end to end, in one conversation.",
   "type": "module",
   "scripts": {
