@@ -42,7 +42,7 @@ If OpenClaw says the plugin config is being ignored, restart OpenClaw and run th
 If you want to install the plugin directly instead of using the setup skill:
 
 ```bash
-openclaw plugins install clawhub:@waltzlabs/flight-assistant-plugin
+openclaw plugins install clawhub:@waltzofwhispers/flight-assistant-plugin
 ```
 
 After install, restart OpenClaw before changing plugin config.
@@ -50,7 +50,7 @@ After install, restart OpenClaw before changing plugin config.
 OpenClaw may also accept:
 
 ```bash
-openclaw plugins install @waltzlabs/flight-assistant-plugin
+openclaw plugins install @waltzofwhispers/flight-assistant-plugin
 ```
 
 but the ClawHub form above is the explicit published install path.
@@ -141,9 +141,9 @@ ClawHub plugin packages use the package publish flow:
 ```bash
 bunx clawhub package publish . \
   --family code-plugin \
-  --name @waltzlabs/flight-assistant-plugin \
+  --name @waltzofwhispers/flight-assistant-plugin \
   --display-name "Waltz Flight Assistant" \
-  --version 0.1.5 \
+  --version 0.2.0 \
   --source-repo WaltzOfWhispers/waltz-flight-assistant-plugin \
   --source-commit "$(git rev-parse HEAD)" \
   --source-ref main \

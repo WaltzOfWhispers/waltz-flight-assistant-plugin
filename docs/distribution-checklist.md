@@ -6,7 +6,7 @@ Use this before publishing a new plugin version or declaring a clean-room instal
 
 - Standalone source of truth: `/Users/christycui/Documents/waltz-flight-assistant-plugin`
 - GitHub repo: `WaltzOfWhispers/waltz-flight-assistant-plugin`
-- ClawHub package name: `@waltzlabs/flight-assistant-plugin`
+- ClawHub package name: `@waltzofwhispers/flight-assistant-plugin`
 - Manifest/config key: `waltz-flight-assistant`
 - Current hosted backend: `https://waltz-flight-staging.up.railway.app`
 
@@ -14,7 +14,7 @@ As of 2026-05-05:
 
 - ClawHub code-plugin publish no longer exposes a true dry-run path in the current CLI.
 - Clean-room local link install succeeds against OpenClaw `2026.4.21`.
-- ClawHub package should be published at `@waltzlabs/flight-assistant-plugin@0.1.5`.
+- ClawHub package should be published at `@waltzofwhispers/flight-assistant-plugin@0.2.0`.
 - Public install and config should point at `https://waltz-flight-staging.up.railway.app`.
 
 ## Local verification
@@ -54,9 +54,9 @@ bun run verify:cleanroom-install
 ```bash
 bunx clawhub package publish . \
   --family code-plugin \
-  --name @waltzlabs/flight-assistant-plugin \
+  --name @waltzofwhispers/flight-assistant-plugin \
   --display-name "Waltz Flight Assistant" \
-  --version 0.1.5 \
+  --version 0.2.0 \
   --source-repo WaltzOfWhispers/waltz-flight-assistant-plugin \
   --source-commit "$(git rev-parse HEAD)" \
   --source-ref main \
@@ -67,7 +67,7 @@ bunx clawhub package publish . \
 4. Verify the published package:
 
 ```bash
-bunx clawhub package inspect @waltzlabs/flight-assistant-plugin
+bunx clawhub package inspect @waltzofwhispers/flight-assistant-plugin
 ```
 
 ## Public install path
@@ -75,7 +75,7 @@ bunx clawhub package inspect @waltzlabs/flight-assistant-plugin
 End users should install from ClawHub:
 
 ```bash
-bunx openclaw plugins install @waltzlabs/flight-assistant-plugin
+bunx openclaw plugins install @waltzofwhispers/flight-assistant-plugin
 ```
 
 Then restart OpenClaw before editing config.
@@ -105,7 +105,7 @@ Validate the actual end-user path on a clean OpenClaw home:
 
 ```bash
 TMP_HOME=$(mktemp -d /tmp/waltz-openclaw-published.XXXXXX)
-HOME="$TMP_HOME" bunx openclaw plugins install @waltzlabs/flight-assistant-plugin
+HOME="$TMP_HOME" bunx openclaw plugins install @waltzofwhispers/flight-assistant-plugin
 ```
 
 Then restart OpenClaw, configure:

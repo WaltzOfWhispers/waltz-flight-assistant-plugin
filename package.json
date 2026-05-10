@@ -1,6 +1,6 @@
 {
-  "name": "@waltzlabs/flight-assistant-plugin",
-  "version": "0.1.5",
+  "name": "@waltzofwhispers/flight-assistant-plugin",
+  "version": "0.2.0",
   "description": "Book flights end to end, in conversation. Waltz learns your preferences and traveler info over time to find the perfect flight for you!",
   "type": "module",
   "scripts": {
@@ -44,7 +44,7 @@
       "./index.ts"
     ],
     "install": {
-      "npmSpec": "@waltzlabs/flight-assistant-plugin",
+      "npmSpec": "@waltzofwhispers/flight-assistant-plugin",
       "localPath": ".",
       "defaultChoice": "npm",
       "minHostVersion": ">=2026.4.0"
