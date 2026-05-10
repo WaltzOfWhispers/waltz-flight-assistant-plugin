@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": false,
+    "outDir": "./dist",
+    "paths": {},
+    "allowImportingTsExtensions": false,
+    "declaration": false,
+    "sourceMap": false
+  },
+  "include": ["index.ts"]
+}

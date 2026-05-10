@@ -4,8 +4,9 @@
   "description": "Book flights end to end, in conversation. Waltz learns your preferences and traveler info over time to find the perfect flight for you!",
   "type": "module",
   "scripts": {
+    "build": "PATH=\"$HOME/.bun/bin:$PATH\" bunx tsc -p tsconfig.build.json",
     "typecheck": "PATH=\"$HOME/.bun/bin:$PATH\" bunx tsc --noEmit",
-    "verify:publish-dry-run": "PATH=\"$HOME/.bun/bin:$PATH\" bunx clawhub package publish WaltzOfWhispers/waltz-flight-assistant-plugin --dry-run --json",
+    "verify:publish-dry-run": "echo 'ClawHub package publish no longer supports dry-run for code plugins. Use the explicit publish command in README after typecheck.'",
     "verify:cleanroom-install": "TMP_HOME=$(mktemp -d /tmp/waltz-openclaw-cleanroom.XXXXXX) && PATH=\"$HOME/.bun/bin:$PATH\" HOME=\"$TMP_HOME\" bunx openclaw plugins install -l \"$PWD\" && test -f \"$TMP_HOME/.openclaw/openclaw.json\" && test -f \"$TMP_HOME/.openclaw/waltz-flight-assistant/openclaw-id.txt\" && echo \"Clean-room OpenClaw home: $TMP_HOME/.openclaw\" && cat \"$TMP_HOME/.openclaw/openclaw.json\""
   },
   "repository": {
@@ -27,6 +28,7 @@
   "files": [
     ".gitignore",
     "README.md",
+    "dist",
     "index.ts",
     "openclaw.plugin.json",
     "skills"

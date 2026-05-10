@@ -105,9 +105,10 @@ For release and clean-room install checks, use the checklist in [docs/distributi
 Convenience commands from this repo:
 
 ```bash
-bun run verify:publish-dry-run
 bun run verify:cleanroom-install
 ```
+
+`verify:publish-dry-run` only prints a reminder because the current ClawHub package CLI no longer supports true dry-runs for code plugins.
 
 ## Booking flow
 
@@ -138,8 +139,16 @@ The hosted backend handles booking recall from stored bookings for the current O
 ClawHub plugin packages use the package publish flow:
 
 ```bash
-bunx clawhub package publish WaltzOfWhispers/waltz-flight-assistant-plugin --dry-run
-bunx clawhub package publish WaltzOfWhispers/waltz-flight-assistant-plugin
+bunx clawhub package publish . \
+  --family code-plugin \
+  --name @waltzlabs/flight-assistant-plugin \
+  --display-name "Waltz Flight Assistant" \
+  --version 0.1.5 \
+  --source-repo WaltzOfWhispers/waltz-flight-assistant-plugin \
+  --source-commit "$(git rev-parse HEAD)" \
+  --source-ref main \
+  --source-path . \
+  --changelog "Describe the release"
 ```
 
 This repository is the standalone source for the Waltz Flight Assistant OpenClaw plugin. Update the GitHub owner or package metadata if you publish it from a different org or account.

@@ -10,11 +10,11 @@ Use this before publishing a new plugin version or declaring a clean-room instal
 - Manifest/config key: `waltz-flight-assistant`
 - Current hosted backend: `https://waltz-flight-staging.up.railway.app`
 
-As of 2026-05-02:
+As of 2026-05-05:
 
-- ClawHub publish dry-run succeeds.
+- ClawHub code-plugin publish no longer exposes a true dry-run path in the current CLI.
 - Clean-room local link install succeeds against OpenClaw `2026.4.21`.
-- ClawHub package is published at `@waltzlabs/flight-assistant-plugin@0.1.4`.
+- ClawHub package should be published at `@waltzlabs/flight-assistant-plugin@0.1.5`.
 - Public install and config should point at `https://waltz-flight-staging.up.railway.app`.
 
 ## Local verification
@@ -24,7 +24,6 @@ From the plugin repo:
 ```bash
 bun install
 bun run typecheck
-bun run verify:publish-dry-run
 bun run verify:cleanroom-install
 ```
 
@@ -43,16 +42,26 @@ bunx clawhub login
 bunx clawhub whoami
 ```
 
-2. Re-run the dry-run:
+2. Verify local metadata and install behavior:
 
 ```bash
-bun run verify:publish-dry-run
+bun run typecheck
+bun run verify:cleanroom-install
 ```
 
 3. Publish the GitHub repo:
 
 ```bash
-bunx clawhub package publish WaltzOfWhispers/waltz-flight-assistant-plugin
+bunx clawhub package publish . \
+  --family code-plugin \
+  --name @waltzlabs/flight-assistant-plugin \
+  --display-name "Waltz Flight Assistant" \
+  --version 0.1.5 \
+  --source-repo WaltzOfWhispers/waltz-flight-assistant-plugin \
+  --source-commit "$(git rev-parse HEAD)" \
+  --source-ref main \
+  --source-path . \
+  --changelog "Describe the release"
 ```
 
 4. Verify the published package:
