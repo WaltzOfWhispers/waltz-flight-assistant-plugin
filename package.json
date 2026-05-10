@@ -1,6 +1,6 @@
 {
   "name": "@waltzofwhispers/flight-assistant-plugin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Book flights end to end, in conversation. Waltz learns your preferences and traveler info over time to find the perfect flight for you!",
   "type": "module",
   "scripts": {
@@ -28,9 +28,12 @@
   "files": [
     ".gitignore",
     "README.md",
+    "api.ts",
     "dist",
     "index.ts",
     "openclaw.plugin.json",
+    "state.ts",
+    "types.ts",
     "skills"
   ],
   "engines": {
