@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "@waltzlabs/flight-assistant-plugin",
+      "name": "@waltzofwhispers/flight-assistant-plugin",
       "devDependencies": {
         "openclaw": "^2026.4.0",
       },
