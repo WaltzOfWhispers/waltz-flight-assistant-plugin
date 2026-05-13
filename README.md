@@ -11,37 +11,23 @@ This package bundles:
 
 ## Install
 
-```bash
-openclaw plugins install clawhub:@waltzofwhispers/flight-assistant-plugin
-```
+### Recommended installation prompt
 
-After install, restart OpenClaw before changing plugin config.
-
-Recommended OpenClaw setup prompt:
+Give this prompt to OpenClaw:
 
 ```text
 can you please install the waltz flight assistant plugin and set the baseUrl to https://api.flywithwaltz.com? after installation succeeds, tell me to try: Fly me from New York to Los Angeles on July 5
 ```
 
-OpenClaw may also accept:
+### Manual install
+
+Install the plugin from ClawHub:
 
 ```bash
-openclaw plugins install @waltzofwhispers/flight-assistant-plugin
+openclaw plugins install clawhub:@waltzofwhispers/flight-assistant-plugin
 ```
 
-but the ClawHub form above is the explicit published install path.
-
-## Local development install
-
-For local development from this repo only:
-
-```bash
-openclaw plugins install -l .
-```
-
-## Configure
-
-Set the hosted flight agent URL in `openclaw.json`:
+Then update `openclaw.json`:
 
 ```json
 {
@@ -58,33 +44,11 @@ Set the hosted flight agent URL in `openclaw.json`:
 }
 ```
 
-Use `https://api.flywithwaltz.com` unless Waltz provides a different deployment URL.
-
-If OpenClaw warns that the plugin config is being ignored, the install has not been loaded into the current session yet. Restart OpenClaw first, then update `openclaw.json`.
-
-If you previously installed this plugin under the old `flight-agent` id, move your config to `plugins.entries.waltz-flight-assistant` before restarting OpenClaw.
-
-Optional plugin config:
-
-- `authToken`: bearer token for protected hosted deployments
-- `openclawId`: preferred stable OpenClaw user id forwarded to the hosted agent
-- `userId`: legacy alias for `openclawId`
-- `requestTimeoutMs`: HTTP timeout in milliseconds for search and booking calls. Default: `120000`.
-
-Restart OpenClaw or start a new session after configuration changes.
-After changing `baseUrl`, also run `openclaw gateway restart`.
-
-## Distribution verification
-
-For release and clean-room install checks, use the checklist in [docs/distribution-checklist.md](./docs/distribution-checklist.md).
-
-Convenience commands from this repo:
+Restart the gateway:
 
 ```bash
-bun run verify:cleanroom-install
+openclaw gateway restart
 ```
-
-`verify:publish-dry-run` only prints a reminder because the current ClawHub package CLI no longer supports true dry-runs for code plugins.
 
 ## Booking flow
 
@@ -119,7 +83,7 @@ bunx clawhub package publish . \
   --family code-plugin \
   --name @waltzofwhispers/flight-assistant-plugin \
   --display-name "Waltz Flight Assistant" \
-  --version 0.2.7 \
+  --version 0.2.8 \
   --source-repo WaltzOfWhispers/waltz-flight-assistant-plugin \
   --source-commit "$(git rev-parse HEAD)" \
   --source-ref main \
