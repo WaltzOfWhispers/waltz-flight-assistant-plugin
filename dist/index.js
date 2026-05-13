@@ -63,6 +63,28 @@ function extractTaskText(task) {
             }
         }
     }
+    if (action?.type === "payment_setup_required" && action.setupUrl) {
+        return {
+            text: [
+                "**PAYMENT SETUP REQUIRED**",
+                `Add a card here: ${action.setupUrl}`,
+                "After setup is complete, continue the booking conversation.",
+            ].join("\n"),
+            action,
+            booking,
+        };
+    }
+    if (action?.type === "payment_authentication_required" && action.authenticationUrl) {
+        return {
+            text: [
+                "**PAYMENT AUTHENTICATION REQUIRED**",
+                `Open this link to complete bank authentication: ${action.authenticationUrl}`,
+                "After it succeeds, continue the booking conversation.",
+            ].join("\n"),
+            action,
+            booking,
+        };
+    }
     return {
         text: parts.join("\n\n").trim(),
         action,

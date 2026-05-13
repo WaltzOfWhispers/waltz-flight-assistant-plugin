@@ -14,7 +14,7 @@ As of 2026-05-05:
 
 - ClawHub code-plugin publish no longer exposes a true dry-run path in the current CLI.
 - Clean-room local link install succeeds against OpenClaw `2026.4.21`.
-- ClawHub package should be published at `@waltzofwhispers/flight-assistant-plugin@0.2.6`.
+- ClawHub package should be published at `@waltzofwhispers/flight-assistant-plugin@0.2.7`.
 - Public install and config should point at `https://api.flywithwaltz.com`.
 
 ## Local verification
@@ -56,7 +56,7 @@ bunx clawhub package publish . \
   --family code-plugin \
   --name @waltzofwhispers/flight-assistant-plugin \
   --display-name "Waltz Flight Assistant" \
-  --version 0.2.6 \
+  --version 0.2.7 \
   --source-repo WaltzOfWhispers/waltz-flight-assistant-plugin \
   --source-commit "$(git rev-parse HEAD)" \
   --source-ref main \
@@ -76,6 +76,12 @@ End users should install from ClawHub:
 
 ```bash
 bunx openclaw plugins install @waltzofwhispers/flight-assistant-plugin
+```
+
+Recommended OpenClaw setup prompt:
+
+```text
+can you please install the waltz flight assistant plugin and set the baseUrl to https://api.flywithwaltz.com? after installation succeeds, tell me to try: Fly me from New York to Los Angeles on July 5
 ```
 
 Then restart OpenClaw before editing config.

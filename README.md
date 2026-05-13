@@ -17,6 +17,12 @@ openclaw plugins install clawhub:@waltzofwhispers/flight-assistant-plugin
 
 After install, restart OpenClaw before changing plugin config.
 
+Recommended OpenClaw setup prompt:
+
+```text
+can you please install the waltz flight assistant plugin and set the baseUrl to https://api.flywithwaltz.com? after installation succeeds, tell me to try: Fly me from New York to Los Angeles on July 5
+```
+
 OpenClaw may also accept:
 
 ```bash
@@ -113,7 +119,7 @@ bunx clawhub package publish . \
   --family code-plugin \
   --name @waltzofwhispers/flight-assistant-plugin \
   --display-name "Waltz Flight Assistant" \
-  --version 0.2.6 \
+  --version 0.2.7 \
   --source-repo WaltzOfWhispers/waltz-flight-assistant-plugin \
   --source-commit "$(git rev-parse HEAD)" \
   --source-ref main \
