@@ -8,14 +8,14 @@ Use this before publishing a new plugin version or declaring a clean-room instal
 - GitHub repo: `WaltzOfWhispers/waltz-flight-assistant-plugin`
 - ClawHub package name: `@waltzofwhispers/flight-assistant-plugin`
 - Manifest/config key: `waltz-flight-assistant`
-- Current hosted backend: `https://waltz-flight-staging.up.railway.app`
+- Current hosted backend: `https://api.flywithwaltz.com`
 
 As of 2026-05-05:
 
 - ClawHub code-plugin publish no longer exposes a true dry-run path in the current CLI.
 - Clean-room local link install succeeds against OpenClaw `2026.4.21`.
-- ClawHub package should be published at `@waltzofwhispers/flight-assistant-plugin@0.2.2`.
-- Public install and config should point at `https://waltz-flight-staging.up.railway.app`.
+- ClawHub package should be published at `@waltzofwhispers/flight-assistant-plugin@0.2.6`.
+- Public install and config should point at `https://api.flywithwaltz.com`.
 
 ## Local verification
 
@@ -56,7 +56,7 @@ bunx clawhub package publish . \
   --family code-plugin \
   --name @waltzofwhispers/flight-assistant-plugin \
   --display-name "Waltz Flight Assistant" \
-  --version 0.2.2 \
+  --version 0.2.6 \
   --source-repo WaltzOfWhispers/waltz-flight-assistant-plugin \
   --source-commit "$(git rev-parse HEAD)" \
   --source-ref main \
@@ -89,7 +89,7 @@ Configure `openclaw.json` with:
       "waltz-flight-assistant": {
         "enabled": true,
         "config": {
-          "baseUrl": "https://waltz-flight-staging.up.railway.app"
+          "baseUrl": "https://api.flywithwaltz.com"
         }
       }
     }
@@ -117,7 +117,7 @@ Then restart OpenClaw, configure:
       "waltz-flight-assistant": {
         "enabled": true,
         "config": {
-          "baseUrl": "https://waltz-flight-staging.up.railway.app"
+          "baseUrl": "https://api.flywithwaltz.com"
         }
       }
     }

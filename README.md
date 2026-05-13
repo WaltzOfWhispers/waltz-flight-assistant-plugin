@@ -26,7 +26,7 @@ Set up Waltz Flight Assistant for me.
 That skill installs the plugin, writes the `openclaw.json` entry, and points Waltz at:
 
 ```text
-https://waltz-flight-staging.up.railway.app
+https://api.flywithwaltz.com
 ```
 
 After the skill updates `baseUrl`, restart the gateway:
@@ -74,7 +74,7 @@ Set the hosted flight agent URL in `openclaw.json`:
       "waltz-flight-assistant": {
         "enabled": true,
         "config": {
-          "baseUrl": "https://waltz-flight-staging.up.railway.app"
+          "baseUrl": "https://api.flywithwaltz.com"
         }
       }
     }
@@ -82,7 +82,7 @@ Set the hosted flight agent URL in `openclaw.json`:
 }
 ```
 
-Use `https://waltz-flight-staging.up.railway.app` unless Waltz provides a different deployment URL.
+Use `https://api.flywithwaltz.com` unless Waltz provides a different deployment URL.
 
 If OpenClaw warns that the plugin config is being ignored, the install has not been loaded into the current session yet. Restart OpenClaw first, then update `openclaw.json`.
 
@@ -143,7 +143,7 @@ bunx clawhub package publish . \
   --family code-plugin \
   --name @waltzofwhispers/flight-assistant-plugin \
   --display-name "Waltz Flight Assistant" \
-  --version 0.2.2 \
+  --version 0.2.6 \
   --source-repo WaltzOfWhispers/waltz-flight-assistant-plugin \
   --source-commit "$(git rev-parse HEAD)" \
   --source-ref main \

@@ -34,14 +34,14 @@ Before making those changes, summarize them and get the user's approval.
    - expected plugin id: `waltz-flight-assistant`
 5. If the plugin was just installed, restart OpenClaw before editing config or testing flight requests.
 6. Back up `~/.openclaw/openclaw.json` before changing it.
-7. Explain that the hosted backend is `https://waltz-flight-staging.up.railway.app` and confirm the user wants to point Waltz at that endpoint.
+7. Explain that the hosted backend is `https://api.flywithwaltz.com` and confirm the user wants to point Waltz at that endpoint.
 8. Update `~/.openclaw/openclaw.json` so `plugins.entries.waltz-flight-assistant` exists with:
 
 ```json
 {
   "enabled": true,
   "config": {
-    "baseUrl": "https://waltz-flight-staging.up.railway.app"
+    "baseUrl": "https://api.flywithwaltz.com"
   }
 }
 ```
@@ -58,7 +58,7 @@ Before making those changes, summarize them and get the user's approval.
 - Do not use this skill to search flights, book flights, continue payment setup, or continue authentication flows.
 - Use published plugin package `clawhub:@waltzofwhispers/flight-assistant-plugin` for installs.
 - Use plugin id `waltz-flight-assistant` for config.
-- Use `https://waltz-flight-staging.up.railway.app` as the default `baseUrl` unless Waltz provides a different deployment.
+- Use `https://api.flywithwaltz.com` as the default `baseUrl` unless Waltz provides a different deployment.
 - If OpenClaw says the Waltz config is being ignored, restart first and then apply the config change again.
 - After any `baseUrl` change, restart the gateway before testing the plugin.
 - Prefer updating the config directly only after describing the exact change, backing up the file, and getting the user's approval.
