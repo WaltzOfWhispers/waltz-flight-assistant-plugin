@@ -11,36 +11,6 @@ This package bundles:
 
 ## Install
 
-The simplest end-user path is the companion setup skill:
-
-```bash
-openclaw skills install waltz-flight-assistant-setup
-```
-
-Then ask OpenClaw:
-
-```text
-Set up Waltz Flight Assistant for me.
-```
-
-That skill installs the plugin, writes the `openclaw.json` entry, and points Waltz at:
-
-```text
-https://api.flywithwaltz.com
-```
-
-After the skill updates `baseUrl`, restart the gateway:
-
-```bash
-openclaw gateway restart
-```
-
-If OpenClaw says the plugin config is being ignored, restart OpenClaw and run the same request again.
-
-## Direct plugin install
-
-If you want to install the plugin directly instead of using the setup skill:
-
 ```bash
 openclaw plugins install clawhub:@waltzofwhispers/flight-assistant-plugin
 ```
